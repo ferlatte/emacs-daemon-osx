@@ -4,24 +4,18 @@ Emacs Client.app is an easy way to get access to Emacs from your Dock.
 
 To install:
 
-Put org.gnu.emacs.plist into ~/Library/LaunchAgents
+Copy org.gnu.emacs.plist into ~/Library/LaunchAgents
 
-launchctl -w org.gnu.emacs
+launchctl load ~/Library/LaunchAgents/org.gnu.emacs.plist
 
-That will start the daemon.
+That will start the daemon at log in running as you.
 
 Move Emacs Client.app into /Applications.
 
 Then, use Emacs Client.app instead of Emacs.app.
 
-Also add (cd (expand-file-name "~/")) to your .emacs; otherwise, the current directory will default to / instead of your homedir, which is not what you want.
+Add (cd (expand-file-name "~/")) to your .emacs; otherwise, the current directory will default to / instead of your homedir, which is not what you want.
 
-Also add this to your personal bin as ~/bin/e:
-
-#! /bin/sh
-
-if -x /Applications/Emacs.app/Contents/MacOS/bin/emacsclient; then
-    exec /Applications/Emacs.app/Contents/MacOS/bin/emacsclient $*
-fi
+Finally, drop `e' into your personal bin and use it for EDITOR and VISUAL.
 
 
