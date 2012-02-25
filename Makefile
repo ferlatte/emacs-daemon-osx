@@ -8,7 +8,11 @@
 	cp $(*).icns $(*).app/Contents/Resources/applet.icns
 	touch $(*).app
 
-.PHONY: all clean
+.PHONY: all clean release
 all: emacs-client.app
 clean:
 	rm -r *.app
+# This is necessary because make doesn't support spaces in file names.
+release: all
+	rm -fr "Emacs Client.app"
+	cp -aR emacs-client.app "Emacs Client.app"
